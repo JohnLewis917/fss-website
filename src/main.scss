@@ -1,0 +1,52 @@
+$font-weights: (
+    "regular": 400,
+    "medium": 500,
+    "bold": 700
+);
+$break-medium: 414 px;
+
+.heading {
+    background: blue;
+    font-weight: map-get($font-weights , bold );
+    height: 80px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.title-holder {
+    border: yellow 1px solid;
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: baseline;
+    align-content: space-between;
+    
+}
+.title {
+    font-size: 13px;
+}
+
+.icon_holder {
+    border: yellow 1px solid;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+    align-items: flex-end; 
+    
+    
+}
+.logo {
+    border: yellow 2px solid;
+    height: 60px;
+    width: auto;
+    display: flex;
+}
+.logo-holder {
+    border: yellow 2px solid;
+    @media screen and (min-width: $break-medium) {
+        height: 80px;
+        width: auto;
+    }
+}
