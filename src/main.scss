@@ -3,7 +3,7 @@ $font-weights: (
     "medium": 500,
     "bold": 700
 );
-$break-medium: 414 px;
+$break-small: 320px;
 
 .heading {
     background: blue;
@@ -22,10 +22,12 @@ $break-medium: 414 px;
 	align-items: baseline;
     align-content: space-between;
     
+    
 }
 .title {
-    font-size: 13px;
+    font-size: 13.5px;  
 }
+
 
 .icon_holder {
     border: yellow 1px solid;
@@ -42,11 +44,8 @@ $break-medium: 414 px;
     height: 60px;
     width: auto;
     display: flex;
-}
-.logo-holder {
     border: yellow 2px solid;
-    @media screen and (min-width: $break-medium) {
-        height: 80px;
-        width: auto;
-    }
+    
 }
+// .logo-holder {
+// }
