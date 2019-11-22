@@ -3,9 +3,9 @@ $font-weights: (
     "medium": 500,
     "bold": 700
 );
-$break-small: 320px;
 
 .heading {
+    // border: yellow 1px solid;
     background: blue;
     font-weight: map-get($font-weights , bold );
     height: 80px;
@@ -13,8 +13,22 @@ $break-small: 320px;
     display: flex;
     justify-content: space-between;
 }
+.links {
+    // border: yellow 1px solid;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-end;
+    align-content: stretch;
+    padding-top: 0px;
+    margin-right: 0px;
+    // margin-left: -20px;
+    font-size: 13px;
+    list-style-type: none;
+}
 .title-holder {
-    border: yellow 1px solid;
+    // border: yellow 1px solid;
     display: flex;
     flex-direction: row;
 	flex-wrap: nowrap;
@@ -27,11 +41,15 @@ $break-small: 320px;
 .title {
     font-size: 13.5px;  
 }
+.fa-align-justify{
+    // border: yellow 1px solid;
+    font-size: 2em
+}
 
 
 .icon_holder {
     border: yellow 1px solid;
-    display: flex;
+    display: none;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-end;
@@ -40,12 +58,43 @@ $break-small: 320px;
     
 }
 .logo {
-    border: yellow 2px solid;
+    // border: yellow 2px solid;
     height: 60px;
     width: auto;
     display: flex;
-    border: yellow 2px solid;
-    
 }
-// .logo-holder {
-// }
+@media only screen and (min-width: 300px) and (max-width: 413px){   
+    .title { font-size: 13.5px};
+    .logo {height: 65px};
+    .fa-align-justify {font-size: 2.3em};
+    .icon_holder {display: flex};
+    .links {display: none}
+}
+@media only screen and (min-width: 414px) and (max-width: 500px){
+    .title { font-size: 15px};
+    .logo {height: 70px};
+    .fa-align-justify {font-size: 2.5em};
+    .icon_holder {display: flex};
+    .links {display: none}
+}
+@media only screen and (min-width: 501px) and (max-width: 600){
+    .title { font-size: 25px};
+    .logo {height: 85px};
+    .fa-align-justify {font-size: 3em};
+    .icon_holder {display: flex};
+    .links {display: none}
+}
+@media only screen and (min-width: 601px) and (max-width: 800px){
+    .title { font-size: 32px; margin-top: 0};
+    .logo {height: 85px};
+    .fa-align-justify {font-size: 3.5em}
+    .icon_holder {display: flex};
+    .links {display: none}
+}
+@media only screen and (min-width: 801px){
+    .title { font-size: 58px; margin-top: 0; margin-left: -70px};
+    .logo {height: 85px};
+    .icon_holder {display: none}
+    .links {display: block; }
+}
+
