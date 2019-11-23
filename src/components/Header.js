@@ -19,9 +19,9 @@ function Header() {
                 </div>
                <li className="links">
                     <li><Link to='/'><button>Main</button></Link></li>
-                    <li><Link to='/Auth'><button>Login/Register</button></Link></li>
                     <li><Link to='/Payment'><button>Donate</button></Link></li>
                     <li><Link to='/Admin'><button>Admin</button></Link></li>
+                    <li><Link to='/Auth'><button>Login/Register</button></Link></li>
                </li>
             </div>
         </header>
