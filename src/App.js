@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './components/Header'
+import Header from './components/Header' 
+import Routes from './Routes'
 import './main.scss'
 
 
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
         <Header/>
        
-        
+        {Routes}
         
 
     </div>
