@@ -38,8 +38,6 @@ body {
 	justify-content: center;
 	align-items: baseline;
     align-content: space-between;
-    
-    
 }
 .title {
     font-family: 'Poppins', sans-serif;
@@ -70,6 +68,11 @@ body {
     width: 120px;
     height: auto;
     display: inline-block
+}
+td {
+    table-layout: fixed;
+    width: 120px;
+    
 }
 
 
