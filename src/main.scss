@@ -55,6 +55,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin-left: 5.5rem;
 }
+
 .login-message {
     @extend .login-title ;
     text-align: center;
@@ -69,29 +70,19 @@ body {
     height: auto;
     display: inline-block
 }
-td {
-    table-layout: fixed;
-    width: 120px;
-    
-}
-
-
 .icon_holder {
-    border: yellow 1px solid;
+    // border: yellow 1px solid;
     display: none;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-end;
-    align-items: flex-end; 
-    
-    
+    align-items: flex-end;   
 }
 .logo {
     // border: yellow 2px solid;
     height: 60px;
     width: auto;
     display: flex;
-    
 }
 .container {
     max-width: 300px;
@@ -104,6 +95,7 @@ td {
     border-radius: 4px;
     font-size: 0.95rem;
 }
+
 button {
     display: inline-block;
     background: #1e6bd6;
@@ -122,6 +114,7 @@ button {
     border-radius: 18px;
 }
 .add-event {
+    //  border: yellow 2px solid;
     @extend .container ;
     margin: 1rem;
 }
