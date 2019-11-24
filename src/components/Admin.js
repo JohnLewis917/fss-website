@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EventItems from "./EventItems";
-import Member from "./Member"
+import Member from "./Member";
 
 class Admin extends Component {
   constructor() {
@@ -101,8 +101,9 @@ class Admin extends Component {
             deleteEvent={this.deleteEvent}
           />
         ))}
+        
         {this.state.memberList.map(el => (
-          <Member 
+          <Member
             key={el.id}
             memberListObj={el}
             deleteMember={this.deleteMember}
