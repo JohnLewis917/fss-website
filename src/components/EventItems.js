@@ -7,31 +7,21 @@ class EventItems extends Component {
 
   render() {
     return (
-      <div className="container-2">
-        <table className="pure-table pure-table-bordered">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Event</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <h6>{this.props.eventListObj.date}</h6>
-              </td>
-              <td>
-                <h6>{this.props.eventListObj.event}</h6>
-              </td>
-              <td>
-                <h6>{this.props.eventListObj.description}</h6>
-              </td>
-            </tr>
-            <button>Edit</button>
-            <button>Delete</button>
-          </tbody>
-        </table>
+      <div>
+        <div>
+          <h6>{this.props.eventListObj.date}</h6>
+        </div>
+        <div>
+          <h6>{this.props.eventListObj.event}</h6>
+        </div>
+        <div>
+          <h6>{this.props.eventListObj.description}</h6>
+        </div>
+
+        <div>
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
       </div>
     );
   }
