@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import EventItems from "./EventItems";
 import Member from "./Member";
-
+import Images from "./Images";
+import FilePond from "react-filepond"
 class Admin extends Component {
   constructor() {
     super();
@@ -109,6 +110,7 @@ class Admin extends Component {
             deleteMember={this.deleteMember}
           />
         ))}
+        
       </div>
     );
   }
