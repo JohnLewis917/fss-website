@@ -14,6 +14,7 @@ app.delete('/api/People/:id', ctrl.deleteMember)
 app.delete('/api/Events/:id', ctrl.deleteEvent)
 app.put('/api/People/:id', ctrl.updateMember)
 app.post('/api/People', ctrl.addMember)
+app.post('/api/Event', ctrl.addEvent)
 
 
 massive(CONNECTION_STRING).then(databaseConnection => {
