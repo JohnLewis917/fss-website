@@ -36,8 +36,8 @@ class Auth extends Component {
   addMember(){
     axios.post('/api/People', this.state)
     .then(res => {
-    this.props.history.push('/admin')
-    })
+    this.setState({memberList: res.data})
+    });
 }
 
   render() {
@@ -86,13 +86,13 @@ class Auth extends Component {
           <input
             className="input-5"
             name="password"
-            type="number"
+            type="text"
             size="20"
             onChange={this.handlePassword}
           ></input>
           <br></br>
           <br></br>
-          <button>Register</button>
+          <button onSubmit={this.addMember}>Register</button>
           <div className="divider"/>
           <button>Login</button>
         </form>
