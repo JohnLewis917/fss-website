@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import EventItems from "./EventItems";
 import Member from "./Member";
 import Images from "./Images";
-import FilePond from "react-filepond"
+import FilePond from "react-filepond";
+import axios from "axios";
+
 class Admin extends Component {
   constructor() {
     super();
@@ -46,6 +48,45 @@ class Admin extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
     this.handleDesc = this.handleDesc.bind(this);
+  }
+  getMembers() {
+    axios.get("/api/People").then(res => {
+      this.setState({
+        memberList: res.data
+      });
+    });
+  }
+  getEvents() {
+    axios.get("/api/Events").then(res => {
+      this.setState({
+        eventList: res.data
+      });
+    });
+  }
+  getOfficers() {
+    axios.get("/api/Officers").then(res => {
+      this.setState({
+        officerList: res.data
+      });
+    });
+  }
+  deleteMember = id => {
+    axios.delete(`/api/People/${id}`).then(() => {
+      this.getMembers();
+    });
+  };
+  deleteEvent = id => {
+    axios.delete(`/api/Event/${id}`).then(() => {
+      this.getEvents();
+    });
+  };
+  updateMember() {
+    console.log(this.state.id, this.state);
+    axios.put(`/api/People/${this.state.id}`, {}).then(res => {
+      this.setState({
+        memberlist: res.data
+      });
+    });
   }
   handleDate(event) {
     this.setState({ date: event.target.value });
@@ -102,7 +143,7 @@ class Admin extends Component {
             deleteEvent={this.deleteEvent}
           />
         ))}
-        
+
         {this.state.memberList.map(el => (
           <Member
             key={el.id}
@@ -110,7 +151,6 @@ class Admin extends Component {
             deleteMember={this.deleteMember}
           />
         ))}
-        
       </div>
     );
   }
