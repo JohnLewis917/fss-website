@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios' 
+import axios from "axios";
 
 class Auth extends Component {
   constructor() {
@@ -33,18 +33,22 @@ class Auth extends Component {
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
-  addMember(){
-    axios.post('/api/People', this.state)
-    .then(res => {
-    this.setState({memberList: res.data})
+  addMember() {
+    axios.post("/api/People", this.state).then(res => {
+      this.setState({ memberList: res.data });
     });
-}
+  }
+  
 
   render() {
     return (
       <div>
-          <h2 className="login-title">Login/Register</h2>
-          <p className="login-message"><h3>New members please register below. Already a member, please login.</h3></p>
+        <h2 className="login-title">Login/Register</h2>
+        <p className="login-message">
+          <h3>
+            New members please register below. Already a member, please login.
+          </h3>
+        </p>
         <form className="container">
           <h5>Rank</h5>
           <input
@@ -93,7 +97,7 @@ class Auth extends Component {
           <br></br>
           <br></br>
           <button onSubmit={this.addMember}>Register</button>
-          <div className="divider"/>
+          <div className="divider" />
           <button>Login</button>
         </form>
       </div>
