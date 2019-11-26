@@ -72,4 +72,20 @@ module.exports = {
             console.log(err)
         }) 
     },
+    addEvent(req, res) {
+        const db = req.app.get('db')
+        const {date, event, description} = req.body
+        console.log(req.body)
+        db.add_event({
+            date: date,
+            event: event,
+            description: description,
+        })
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
+    },
 }
