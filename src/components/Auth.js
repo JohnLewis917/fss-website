@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios' 
 
 class Auth extends Component {
   constructor() {
@@ -32,6 +33,12 @@ class Auth extends Component {
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
+  addMember(){
+    axios.post('/api/People', this.state)
+    .then(res => {
+    this.props.history.push('/admin')
+    })
+}
 
   render() {
     return (
