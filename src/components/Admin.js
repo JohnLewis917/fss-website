@@ -10,40 +10,8 @@ class Admin extends Component {
     super();
     this.state = {
       officerList: [],
-      memberList: [
-        {
-          rank: "SrA",
-          first_name: "Joe",
-          last_name: "Snuffy",
-          email: "joe@snuffy.com",
-          paid: "Yes",
-          amount: 20,
-          isAdmin: false
-        },
-        {
-          rank: "SSgt",
-          first_name: "Jack",
-          last_name: "Smith",
-          email: "jack@smith.com",
-          paid: "Yes",
-          amount: 25,
-          isAdmin: true
-        }
-      ],
-      eventList: [
-        {
-          date: "11/30/19",
-          event: "Holiday Wrapping fundraiser at the BX",
-          description:
-            "Holiday gift wrapping on Saturday starting at 0900. Please come out and help support our Booster club"
-        },
-        {
-          date: "12/9/19",
-          event: "926 FSS Holiday Party at the Westgate Hotel",
-          description:
-            "come celebrate the holidays with the 926. Catered dinner, music, door prizes, and lots of fun!"
-        }
-      ]
+      memberList: [],
+      eventList: []
     };
     this.handleDate = this.handleDate.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
@@ -63,6 +31,11 @@ class Admin extends Component {
       });
     });
   }
+  addEvent() {
+    axios.post("/api/Event", this.state)
+    .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
+  }
+  
   getOfficers() {
     axios.get("/api/Officers").then(res => {
       this.setState({
@@ -88,8 +61,9 @@ class Admin extends Component {
       });
     });
   }
-  handleDate(event) {
+  handleDate(event) { 
     this.setState({ date: event.target.value });
+    console.log(event.target.value)
   }
   handleEvent(event) {
     this.setState({ event: event.target.value });
@@ -109,7 +83,7 @@ class Admin extends Component {
             name="Date"
             type="text"
             size="10"
-            onChange={this.state.handleDate}
+            onChange={this.handleDate}
           ></input>
           <br></br>
           <h5>Event</h5>
@@ -118,7 +92,7 @@ class Admin extends Component {
             name="Event"
             type="text"
             size="35"
-            onChange={this.state.handleEvent}
+            onChange={this.handleEvent}
           ></input>
           <br></br>
           <h5>Description</h5>
@@ -127,11 +101,11 @@ class Admin extends Component {
             name="city"
             type="text"
             size="45"
-            onChange={this.state.handleDesc}
+            onChange={this.handleDesc}
           ></textarea>
           <br></br>
           <br></br>
-          <button color="primary" className="submitEvent" type="submit">
+          <button color="primary" className="submitEvent" type="submit" onClick={() => this.addEvent()}>
             Add
           </button>
         </form>
