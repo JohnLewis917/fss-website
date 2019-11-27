@@ -8,6 +8,7 @@ import Member from "./Member";
 import Images from "./Images";
 import axios from "axios";
 import AddEvent from "./AddEvent";
+
 registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
@@ -27,6 +28,7 @@ class Admin extends Component {
       });
     });
   }
+  
   getMembers() {
     axios.get("/api/People").then(res => {
       this.setState({
@@ -76,6 +78,7 @@ class Admin extends Component {
   render() {
     return (
       <div>
+        
         <AddEvent onAddEvent={this.handleAddEvent} />
         <table>
           {this.state.eventList.map(el => (
