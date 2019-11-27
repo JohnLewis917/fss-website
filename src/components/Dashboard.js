@@ -20,7 +20,7 @@ class Dashboard extends Component {
             <div>
                 <div className="file-pond">
 
-                <FilePond allowMultiple={true} />
+                
                 </div>
             </div>
         )
