@@ -33,9 +33,10 @@ class Auth extends Component {
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
-  addMember() {
+  addMember(event) {
+    event.preventDefault()
     axios.post("/api/People", this.state).then(res => {
-      this.setState({ memberList: res.data });
+      this.setState({rank:"", first_name:"", last_name:});
     });
   }
   
