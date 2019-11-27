@@ -54,7 +54,7 @@ module.exports = {
         })
         
     },
-    addMember(req, res) {
+    register(req, res) {
         const db = req.app.get('db')
         const {member_rank, first_name, last_name, email} = req.body
         console.log(req.body)
