@@ -6,34 +6,22 @@ class Member extends Component {
   }
   render() {
     return (
-      <div>
-        <div>
-          <h6>{this.props.memberListObj.rank}</h6>
-        </div>
-        <div>
-          <h6>{this.props.memberListObj.first_name}</h6>
-        </div>
-        <div>
-          <h6>{this.props.memberListObj.last_name}</h6>
-        </div>
-        <div>
-          <h6>{this.props.memberListObj.email}</h6>
-        </div>
-        <div>
-          <h6>{this.props.memberListObj.paid}</h6>
-        </div>
-        <div>
-          <h6>{this.props.memberListObj.amount}</h6>
-        </div>
-        <div>
-          <h6>{this.props.memberListObj.isAdmin}</h6>
-        </div>
+      <tr>
+        <td>{this.props.memberListObj.rank}</td>
+        <td>{this.props.memberListObj.first_name}</td>
+        <td>{this.props.memberListObj.last_name}</td>
+        <td>{this.props.memberListObj.email}</td>
+        <td>{this.props.memberListObj.paid}</td>
+        <td>{this.props.memberListObj.amount}</td>
+        <td>{this.props.memberListObj.isAdmin}</td>
 
-        <div>
+        <td>
           <button>Edit</button>
+        </td>
+        <td>
           <button>Delete</button>
-        </div>
-      </div>
+        </td>
+      </tr>
     );
   }
 }
