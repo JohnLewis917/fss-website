@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import EventItems from "./EventItems";
+import { FilePond, registerPlugin } from "react-filepond";
+import "filepond/dist/filepond.min.css";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+import EventItem from "./EventItem";
 import Member from "./Member";
 import Images from "./Images";
-import FilePond from "react-filepond";
 import axios from "axios";
+import AddEvent from "./AddEvent";
+registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
   constructor() {
@@ -13,9 +18,14 @@ class Admin extends Component {
       memberList: [],
       eventList: []
     };
-    this.handleDate = this.handleDate.bind(this);
-    this.handleEvent = this.handleEvent.bind(this);
-    this.handleDesc = this.handleDesc.bind(this);
+    this.handleAddEvent = this.handleAddEvent.bind(this);
+  }
+  componentDidMount() {
+    axios.get("/api/Events").then(res => {
+      this.setState({
+        eventList: res.data
+      });
+    });
   }
   getMembers() {
     axios.get("/api/People").then(res => {
@@ -31,11 +41,12 @@ class Admin extends Component {
       });
     });
   }
-  addEvent() {
-    axios.post("/api/Event", this.state)
-    .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
+
+  handleAddEvent(event) {
+    axios.post("/api/Event", event);
+    // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
   }
-  
+
   getOfficers() {
     axios.get("/api/Officers").then(res => {
       this.setState({
@@ -61,62 +72,20 @@ class Admin extends Component {
       });
     });
   }
-  handleDate(event) { 
-    this.setState({ date: event.target.value });
-    console.log(event.target.value)
-  }
-  handleEvent(event) {
-    this.setState({ event: event.target.value });
-  }
-  handleDesc(event) {
-    this.setState({ description: event.target.value });
-  }
+
   render() {
     return (
       <div>
-        <h1 className="event-title">Add Event</h1>
-
-        <form className="add-event">
-          <h5>Date</h5>
-          <input
-            className="input-1"
-            name="Date"
-            type="text"
-            size="10"
-            onChange={this.handleDate}
-          ></input>
-          <br></br>
-          <h5>Event</h5>
-          <input
-            className="input-2"
-            name="Event"
-            type="text"
-            size="35"
-            onChange={this.handleEvent}
-          ></input>
-          <br></br>
-          <h5>Description</h5>
-          <textarea
-            className="input-3"
-            name="city"
-            type="text"
-            size="45"
-            onChange={this.handleDesc}
-          ></textarea>
-          <br></br>
-          <br></br>
-          <button color="primary" className="submitEvent" type="submit" onClick={() => this.addEvent()}>
-            Add
-          </button>
-        </form>
-
-        {this.state.eventList.map(el => (
-          <EventItems
-            key={el.id}
-            eventListObj={el}
-            deleteEvent={this.deleteEvent}
-          />
-        ))}
+        <AddEvent onAddEvent={this.handleAddEvent} />
+        <table>
+          {this.state.eventList.map(el => (
+            <EventItem
+              key={el.id}
+              eventListObj={el}
+              deleteEvent={this.deleteEvent}
+            />
+          ))}
+        </table>
 
         {this.state.memberList.map(el => (
           <Member
@@ -125,6 +94,9 @@ class Admin extends Component {
             deleteMember={this.deleteMember}
           />
         ))}
+        <div className="file-pond">
+          <FilePond allowMultiple={true} />
+        </div>
       </div>
     );
   }
