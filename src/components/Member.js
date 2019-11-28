@@ -19,7 +19,7 @@ class Member extends Component {
           <button>Edit</button>
         </td>
         <td>
-          <button>Delete</button>
+          <button onClick={() => this.props.deleteMember(this.props.memberListObj.id)}>Delete</button>
         </td>
       </tr>
     );
