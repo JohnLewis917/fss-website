@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Register from './Register';
+import AddMember from './AddMember';
 import Login from './Login';
 
 
@@ -10,7 +10,7 @@ class Auth extends Component {
     super();
     
   }
-  handleRegister(event) {
+  handleAddMember(event) {
     axios.post("/api/People", event);
   }
     // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
@@ -21,7 +21,7 @@ class Auth extends Component {
   render() {
     return (
       <div>
-        <Register onRegister={this.HandleRegister}/>
+        <AddMember onAddMember={this.handleAddMember}/>
         
         
         
