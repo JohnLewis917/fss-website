@@ -13,7 +13,7 @@ app.get('/api/Officers', ctrl.getOfficers)
 app.delete('/api/People/:id', ctrl.deleteMember)
 app.delete('/api/Events/:id', ctrl.deleteEvent)
 app.put('/api/People/:id', ctrl.updateMember)
-app.post('/api/People', ctrl.register)
+app.post('/api/People', ctrl.addMember)
 app.post('/api/Event', ctrl.addEvent)
 
 
