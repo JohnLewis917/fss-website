@@ -7,7 +7,7 @@ class Member extends Component {
   render() {
     return (
       <tr>
-        <td>{this.props.memberListObj.rank}</td>
+        <td>{this.props.memberListObj.member_rank}</td>
         <td>{this.props.memberListObj.first_name}</td>
         <td>{this.props.memberListObj.last_name}</td>
         <td>{this.props.memberListObj.email}</td>
