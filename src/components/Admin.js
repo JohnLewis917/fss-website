@@ -22,22 +22,23 @@ class Admin extends Component {
     this.handleAddEvent = this.handleAddEvent.bind(this);
   }
   componentDidMount() {
-    axios.get("/api/Events").then(res => {
+    axios.get("/api/Event").then(res => {
       this.setState({
         eventList: res.data
       });
     });
   }
 
-  getMembers() {
+  getMember() {
     axios.get("/api/People").then(res => {
       this.setState({
         memberList: res.data
+        
       });
     });
   }
   getEvents() {
-    axios.get("/api/Events").then(res => {
+    axios.get("/api/Event").then(res => {
       this.setState({
         eventList: res.data
       });
@@ -58,7 +59,7 @@ class Admin extends Component {
   }
   deleteMember = id => {
     axios.delete(`/api/People/${id}`).then(() => {
-      this.getMembers();
+      this.getMember();
     });
   };
   deleteEvent = id => {
@@ -76,6 +77,7 @@ class Admin extends Component {
   }
 
   render() {
+    
     return (
       <div>
         <AddEvent onAddEvent={this.handleAddEvent} />
@@ -94,6 +96,7 @@ class Admin extends Component {
               key={el.id}
               memberListObj={el}
               deleteMember={this.deleteMember}
+             
             />
           ))}
         </table>
