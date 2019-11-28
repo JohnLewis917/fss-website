@@ -1,5 +1,5 @@
 module.exports = {
-    getMembers(req, res) {
+    getMember(req, res) {
         const db = req.app.get('db')
         db.get_member()
         .then(result => {
