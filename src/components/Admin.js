@@ -28,7 +28,7 @@ class Admin extends Component {
       });
     });
   }
-  
+
   getMembers() {
     axios.get("/api/People").then(res => {
       this.setState({
@@ -78,7 +78,6 @@ class Admin extends Component {
   render() {
     return (
       <div>
-        
         <AddEvent onAddEvent={this.handleAddEvent} />
         <table>
           {this.state.eventList.map(el => (
@@ -89,14 +88,16 @@ class Admin extends Component {
             />
           ))}
         </table>
+        <table>
+          {this.state.memberList.map(el => (
+            <Member
+              key={el.id}
+              memberListObj={el}
+              deleteMember={this.deleteMember}
+            />
+          ))}
+        </table>
 
-        {this.state.memberList.map(el => (
-          <Member
-            key={el.id}
-            memberListObj={el}
-            deleteMember={this.deleteMember}
-          />
-        ))}
         <div className="file-pond">
           <FilePond allowMultiple={true} />
         </div>
