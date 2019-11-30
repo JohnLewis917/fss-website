@@ -33,17 +33,16 @@ class Admin extends Component {
     axios.get("/api/People").then(res => {
       this.setState({
         memberList: res.data
-        
       });
     });
   }
-  getEvents() {
-    axios.get("/api/Event").then(res => {
-      this.setState({
-        eventList: res.data
-      });
-    });
-  }
+  // getEvents() {
+  //   axios.get("/api/Event").then(res => {
+  //     this.setState({
+  //       eventList: res.data
+  //     });
+  //   });
+  // }
 
   handleAddEvent(event) {
     axios.post("/api/Event", event);
