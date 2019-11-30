@@ -17,6 +17,11 @@ class Login extends Component {
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
+  // login(event) {
+  //   event.preventDefault();
+  //   this.props.onAddMember(this.state);
+  //   this.setState({ email: "", password: "" });
+  // }
   render() {
     return (
       <div>
@@ -48,7 +53,7 @@ class Login extends Component {
           <br></br>
             <button>Register</button>
           <div className="divider" />
-          <button>Login</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     );
