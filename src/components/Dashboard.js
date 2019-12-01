@@ -10,15 +10,15 @@ class Dashboard extends Component {
         super ()
 
         this.state = {
-            officer_list: [],
-            events_list: []
+            officerList: [],
+            eventList: []
         }
     }
     
     render(){
         return(
             <div>
-                <div className="file-pond">
+                <div>
 
                 
                 </div>
