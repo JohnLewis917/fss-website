@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Member from "./Member";
 import Login from './Login';
 
@@ -103,12 +104,13 @@ class AddMember extends Component {
           <br></br>
           <button type="submit">Register</button>
           <div className="divider" />
+          <Link to="/Login">
             <button>Login</button>
-          
+          </Link>
         </form>
         
       </div>
     );
   }
 }
-export default AddMember;
+export default AddMember
