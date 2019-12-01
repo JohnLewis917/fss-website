@@ -23,6 +23,7 @@ app.delete('/api/Event/:id', ctrl.deleteEvent)
 app.put('/api/People/:id', ctrl.updateMember)
 // app.post('/api/People', ctrl.addMember)
 app.post('/auth/register', authCtrl.addMember)
+app.post('/auth/login', authCtrl.login)
 app.post('/api/Event', ctrl.addEvent)
 
 
