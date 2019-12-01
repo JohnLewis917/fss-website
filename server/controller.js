@@ -54,24 +54,24 @@ module.exports = {
         })
         
     },
-    addMember(req, res) {
-        const db = req.app.get('db')
-        const {member_rank, first_name, last_name, email} = req.body
-        console.log(req.body)
-        db.add_member({
-            member_rank: member_rank,
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
+    // addMember(req, res) {
+    //     const db = req.app.get('db')
+    //     const {member_rank, first_name, last_name, email} = req.body
+    //     console.log(req.body)
+    //     db.add_member({
+    //         member_rank: member_rank,
+    //         first_name: first_name,
+    //         last_name: last_name,
+    //         email: email,
             
-        })
-        .then(result => {
-            res.status(200).send(result)
-        })
-        .catch(err => {
-            console.log(err)
-        }) 
-    },
+    //     })
+    //     .then(result => {
+    //         res.status(200).send(result)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     }) 
+    // },
     addEvent(req, res) {
         const db = req.app.get('db')
         const {date, event, description} = req.body
