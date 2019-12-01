@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +30,7 @@ class Login extends Component {
         <p className="login-message">
           <h3>Please login below. Not a member, please register.</h3>
         </p>
-        <form className="container" onSubmit={this.login}>
+        <form className="container-2" onSubmit={this.login}>
           <h5>Email</h5>
           <input
             className="input-4"
@@ -51,7 +52,9 @@ class Login extends Component {
           ></input>
           <br></br>
           <br></br>
+          
             <button>Register</button>
+          
           <div className="divider" />
           <button type="submit">Login</button>
         </form>
