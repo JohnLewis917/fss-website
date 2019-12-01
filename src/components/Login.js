@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
+import axios from 'axios'
 
 
 class Login extends Component {
@@ -7,7 +8,8 @@ class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      
     };
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -18,11 +20,15 @@ class Login extends Component {
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
-  // login(event) {
-  //   event.preventDefault();
-  //   this.props.onAddMember(this.state);
-  //   this.setState({ email: "", password: "" });
-  // }
+  async login() {
+    let res = await axios.post('/auth/login', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    // this.setState({
+    //   member: res.data.memberData
+    // })
+  }
   render() {
     return (
       <div>
@@ -30,7 +36,7 @@ class Login extends Component {
         <p className="login-message">
           <h3>Please login below. Not a member, please register.</h3>
         </p>
-        <form className="container-2" onSubmit={this.login}>
+        <form className="container-2" onSubmit={() => this.login}>
           <h5>Email</h5>
           <input
             className="input-4"
