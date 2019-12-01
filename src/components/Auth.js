@@ -22,6 +22,7 @@ class Auth extends Component {
     return (
       <div>
         <AddMember onAddMember={this.handleAddMember}/>
+        <Login/>
         
         
         
