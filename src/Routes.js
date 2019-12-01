@@ -12,5 +12,6 @@ export default (
         <Route path='/Auth' component={Auth}/>
         {/* <Route path='/Payment' component={Payment}/> */}
         <Route path='/Admin' component={Admin}/>
+        
     </Switch>
 )
