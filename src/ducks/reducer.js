@@ -1,6 +1,7 @@
 const initialState = {
-    date: "",
-    nameEvent: "",
-    eventDesc: ""
+    member_rank: "",
+    first_name: "",
+    last_name: "",
+    image:""
 }
 
