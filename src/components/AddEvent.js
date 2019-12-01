@@ -6,12 +6,14 @@ class AddEvent extends Component {
     this.state = {
       date: "",
       event: "",
-      description: ""
+      description: "",
+      // isEditing: id ? true : false 
     };
     this.handleDate = this.handleDate.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
     this.handleDesc = this.handleDesc.bind(this);
     this.addEvent = this.addEvent.bind(this);
+    this.updateEvent=this.updateEvent.bind(this)
   }
   handleDate(event) {
     this.setState({ date: event.target.value });
@@ -28,13 +30,25 @@ class AddEvent extends Component {
     this.props.onAddEvent(this.state);
     this.setState({ date: "", event: "", description: "" });
   }
+  updateEvent(event){
+    event.preventDefault();
+    this.props.onUpdateEvent(this.state)
+    this.setState({date: "", event: "", description: "" })
+  }
+  handleSubmit(){
+    if (this.state.isEditing){
+        this.updateEvent()
+    }else {
+        this.addEvent()
+    }
+  }
 
   render() {
     return (
       <div>
         <h1 className="event-title">Add Event</h1>
 
-        <form className="add-event" onSubmit={this.addEvent}>
+        <form className="add-event" onSubmit={this.handleSubmit}>
           <h5>Date</h5>
           <input
             className="input-1"
