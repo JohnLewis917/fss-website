@@ -28,3 +28,6 @@ hash_id serial primary key,
 hash text,
 member_id int references member_list(id)
 )
+
+insert into member_list_hash(hash, member_id)
+values('jackal',1)
