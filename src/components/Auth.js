@@ -11,7 +11,7 @@ class Auth extends Component {
     
   }
   handleAddMember(event) {
-    axios.post("/api/People", event);
+    axios.post("/auth/register", event);
   }
     // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
   
@@ -22,7 +22,7 @@ class Auth extends Component {
     return (
       <div>
         <AddMember onAddMember={this.handleAddMember}/>
-        <Login/>
+        
         
         
         
