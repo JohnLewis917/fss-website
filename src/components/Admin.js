@@ -36,18 +36,14 @@ class Admin extends Component {
       });
     });
   }
-  // getEvents() {
-  //   axios.get("/api/Event").then(res => {
-  //     this.setState({
-  //       eventList: res.data
-  //     });
-  //   });
-  // }
 
   handleAddEvent(event) {
     axios.post("/api/Event", event);
-    // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
+    
   }
+  // handleUpdateEvent(event) {
+  //   axios.put(`/api/Event/${id}`, event)
+  // }
 
   getOfficers() {
     axios.get("/api/Officers").then(res => {
@@ -79,7 +75,8 @@ class Admin extends Component {
     
     return (
       <div>
-        <AddEvent onAddEvent={this.handleAddEvent} />
+        <AddEvent onAddEvent={this.handleAddEvent} 
+        onUpdateEvent={this.handleUpdateEvent}/>
         <table>
           {this.state.eventList.map(el => (
             <EventItem
