@@ -22,3 +22,9 @@ first_name varchar(50),
 last_name varchar(50),
 image text
 )
+
+create table member_list_hash (
+hash_id serial primary key,
+hash text,
+member_id int references member_list(id)
+)
