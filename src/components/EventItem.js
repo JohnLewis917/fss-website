@@ -13,7 +13,8 @@ class EventItem extends Component {
         <td>{this.props.eventListObj.description}</td>
 
         <td>
-          <button>Edit</button>
+          <button type="submit">Edit</button>  
+          {/* {this.state.isEditing ? 'Save Changes': 'Edit'} */}
         </td>
         <td>
           <button onClick={() => this.props.deleteEvent(this.props.eventListObj.id)}>Delete</button>
