@@ -1,10 +1,6 @@
 import React, {Component} from 'react'
-import { FilePond, registerPlugin } from 'react-filepond';
-import 'filepond/dist/filepond.min.css';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+import axios from 'axios'
 
-registerPlugin(FilePondPluginImagePreview);
 
 class Dashboard extends Component {
     constructor (){
@@ -15,6 +11,7 @@ class Dashboard extends Component {
             eventList: []
         }
     }
+    
     
     render(){
         return(
