@@ -41,9 +41,9 @@ class Admin extends Component {
     axios.post("/api/Event", event);
     
   }
-  // handleUpdateEvent(event) {
-  //   axios.put(`/api/Event/${id}`, event)
-  // }
+  handleUpdateEvent(event) {
+    axios.put(`/api/Event/${id}`, event)
+  }
 
   getOfficers() {
     axios.get("/api/Officers").then(res => {
