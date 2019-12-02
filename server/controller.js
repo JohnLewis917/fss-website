@@ -54,6 +54,17 @@ module.exports = {
         })
         
     },
+    updateEvent(req, res){
+        console.log(req.body, req.params)
+        const db = req.app.get('db')
+        const {date, event, description} = req.body
+        const {id} = req.params
+        db.update_event([date, event, description, +id])
+        .then(result => {
+            res.status(200).send(result)
+        })
+        
+    },
     // addMember(req, res) {
     //     const db = req.app.get('db')
     //     const {member_rank, first_name, last_name, email} = req.body
