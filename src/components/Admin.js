@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { FilePond, registerPlugin } from "react-filepond";
-import "filepond/dist/filepond.min.css";
-import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+// import { FilePond, registerPlugin } from "react-filepond";
+// import "filepond/dist/filepond.min.css";
+// import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
 import EventItem from "./EventItem";
 import Member from "./Member";
 import Images from "./Images";
@@ -27,8 +27,19 @@ class Admin extends Component {
         eventList: res.data
       });
     });
+    axios.get("/api/People").then(res => {
+      this.setState({
+        memberList: res.data
+      });
+    });
   }
-
+  getEvents() {
+    axios.get("/api/Event").then(res => {
+      this.setState({
+        eventList: res.data
+      });
+    });
+  }
   getMember() {
     axios.get("/api/People").then(res => {
       this.setState({
@@ -41,9 +52,9 @@ class Admin extends Component {
     axios.post("/api/Event", event);
     
   }
-  handleUpdateEvent(event) {
-    axios.put(`/api/Event/${id}`, event)
-  }
+  // handleUpdateEvent(event) {
+  //   axios.put(`/api/Event/${id}`, event)
+  // }
 
   getOfficers() {
     axios.get("/api/Officers").then(res => {
