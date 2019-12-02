@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Member from "./Member";
-import Login from './Login';
+
+
 
 class AddMember extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class AddMember extends Component {
     event.preventDefault();
     this.props.onAddMember(this.state);
     this.setState({ member_rank: "", first_name: "", last_name: "", email: "", password: "" });
+    
   }
 
   render() {
