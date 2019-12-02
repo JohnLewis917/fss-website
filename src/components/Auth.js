@@ -5,6 +5,7 @@ import Login from './Login';
 
 
 
+
 class Auth extends Component {
   constructor() {
     super();
@@ -12,6 +13,7 @@ class Auth extends Component {
   }
   handleAddMember(event) {
     axios.post("/auth/register", event);
+    
   }
     // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
   
