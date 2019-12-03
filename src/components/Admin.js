@@ -9,7 +9,7 @@ import Images from "./Images";
 import axios from "axios";
 import AddEvent from "./AddEvent";
 
-registerPlugin(FilePondPluginImagePreview);
+// registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
   constructor() {
@@ -109,7 +109,7 @@ class Admin extends Component {
         </table>
 
         <div className="file-pond">
-          <FilePond allowMultiple={true} />
+          {/* <FilePond allowMultiple={true} /> */}
         </div>
       </div>
     );
