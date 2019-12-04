@@ -16,13 +16,15 @@ class AddEvent extends Component {
     this.handleDesc = this.handleDesc.bind(this);
     this.addEvent = this.addEvent.bind(this);
     this.updateEvent=this.updateEvent.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleDate(event) {
     this.setState({ date: event.target.value });
-    console.log(event.target.value);
+    
   }
   handleEvent(event) {
     this.setState({ event: event.target.value });
+    
   }
   handleDesc(event) {
     this.setState({ description: event.target.value });
@@ -35,23 +37,24 @@ class AddEvent extends Component {
   }
   updateEvent(event){
     event.preventDefault();
-    this.props.onUpdateEvent(this.state)
+    this.props.onUpdateEvent(this.state.id)
     this.setState({date: "", event: "", description: "" })
   }
-  handleSubmit(){
+  handleSubmit(event){
     if (this.state.isEditing){
-        this.updateEvent()
+        this.updateEvent(event)
     }else {
-        this.addEvent()
+        this.addEvent(event)
     }
-  }
+}
+  
 
   render() {
     return (
       <div>
         <h1 className="event-title">Add Event</h1>
 
-        <form className="add-event" onSubmit={this.handleSubmit}>
+        <form className="add-event" >
           <h5>Date</h5>
           <input
             className="input-1"
@@ -83,7 +86,7 @@ class AddEvent extends Component {
           ></textarea>
           <br></br>
           <br></br>
-          <button color="primary" className="submitEvent" type="submit">
+          <button onClick={this.handleSubmit} color="primary" className="submitEvent" type="button">
           {this.state.isEditing ? 'Save Changes': 'Add'}
           </button>
         </form>
