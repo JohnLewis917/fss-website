@@ -12,21 +12,9 @@ function Header() {
         <div className="title-holder">
           <h3 className="title">926 FSS Sandstormer Booster Club</h3>
         </div>
-        <div >
+        <div>
           <div className="icon_holder">
-            <a
-              onClick={() => {myFunction()}}
-              className="fas fa-align-justify"
-              href="#"
-              data-target="dropdown1"
-            ></a>
-            <div id="myDropdown" className="dropdown-content">
-              <a href="#">Main</a>
-              <a href="#">Donate</a>
-              <a href="#">Admin</a>
-              <a href="#">Login/Register</a>
-              <a href="#">Logout</a>
-            </div>
+            <i className="fas fa-align-justify"></i>
           </div>
         </div>
         <li className="links">
@@ -58,22 +46,5 @@ function Header() {
     </header>
   );
 }
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches(".fa-align-justify")) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
-  }
-};
 
 export default Header;
