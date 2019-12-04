@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import {withRouter} from 'react-router-dom'
 
 class AddEvent extends Component {
   constructor(props) {
     super(props);
+    const{id} = this.props.match.params
     this.state = {
       date: "",
       event: "",
       description: "",
-      // isEditing: id ? true : false 
+      isEditing: id ? true : false 
     };
     this.handleDate = this.handleDate.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
@@ -25,6 +27,7 @@ class AddEvent extends Component {
   handleDesc(event) {
     this.setState({ description: event.target.value });
   }
+  
   addEvent(event) {
     event.preventDefault();
     this.props.onAddEvent(this.state);
@@ -81,11 +84,11 @@ class AddEvent extends Component {
           <br></br>
           <br></br>
           <button color="primary" className="submitEvent" type="submit">
-            Add
+          {this.state.isEditing ? 'Save Changes': 'Add'}
           </button>
         </form>
       </div>
     );
   }
 }
-export default AddEvent;
+export default withRouter(AddEvent);
