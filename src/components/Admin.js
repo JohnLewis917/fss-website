@@ -5,21 +5,22 @@ import React, { Component } from "react";
 // import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
 import EventItem from "./EventItem";
 import Member from "./Member";
-import Images from "./Images";
+import Images from "./Officers";
 import axios from "axios";
 import AddEvent from "./AddEvent";
 
 // registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       officerList: [],
       memberList: [],
       eventList: []
     };
     this.handleAddEvent = this.handleAddEvent.bind(this);
+    this.handleUpdateEvent = this.handleUpdateEvent.bind(this);
   }
   componentDidMount() {
     axios.get("/api/Event").then(res => {
@@ -52,9 +53,9 @@ class Admin extends Component {
     axios.post("/api/Event", event);
     
   }
-  // handleUpdateEvent(event) {
-  //   axios.put(`/api/Event/${id}`, event)
-  // }
+  handleUpdateEvent(event) {
+    axios.put(`/api/Event/${id}`, event)
+  }
 
   getOfficers() {
     axios.get("/api/Officers").then(res => {
@@ -88,7 +89,11 @@ class Admin extends Component {
       <div>
         <AddEvent onAddEvent={this.handleAddEvent} 
         onUpdateEvent={this.handleUpdateEvent}/>
-        <table>
+        <h2>Events</h2>
+        <table className="table-1">
+          <th>Date</th>
+          <th>Event</th>
+          <th>Description</th>
           {this.state.eventList.map(el => (
             <EventItem
               key={el.id}
@@ -97,7 +102,15 @@ class Admin extends Component {
             />
           ))}
         </table>
-        <table>
+        <h2>Members</h2>
+        <table className="table-2">
+          <th>Rank</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Paid</th>
+          <th>Amount</th>
+          <th>Admin</th>
           {this.state.memberList.map(el => (
             <Member
               key={el.id}
