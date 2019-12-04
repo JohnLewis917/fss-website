@@ -1,6 +1,5 @@
 
 const initialState = {
-    member_rank: "",
     first_name: "",
     last_name: "",
     image:"",
@@ -8,8 +7,8 @@ const initialState = {
     event:"",
     description:""
 }
-GET_EVENTS = 'GET_EVENTS'
-GET_OFFICERS = 'GET_OFFICERS'
+export const GET_EVENTS = 'GET_EVENTS'
+export const GET_OFFICERS = 'GET_OFFICERS'
 
 export const getEvents = (date, event, description) => {
     return {
@@ -17,10 +16,10 @@ export const getEvents = (date, event, description) => {
         payload: {date, event, description}
     }
 }
-export const getOfficers = (member_rank, first_name, last_name, image) => {
+export const getOfficers = (first_name, last_name, image) => {
     return {
         type: GET_OFFICERS,
-        payload: {member_rank, first_name, last_name, image}
+        payload: {first_name, last_name, image}
     }
 }
 
