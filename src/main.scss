@@ -108,8 +108,14 @@ body {
 .table-1 {
   margin-bottom: 50px;
   margin-right: 500px;
+  font-size: 2rem;
+  
 }
-
+.table-2 {
+  margin-right: 800px;
+  font-size: 2rem;
+  
+}
 td, th {
   border: 1px solid black;
   padding: 0.5rem;
@@ -239,6 +245,16 @@ transition: box-shadow 150ms ease;
   .checkout {
     margin-left: 10%;
   }
+  .table-1 {
+    font-size: 0.4rem;
+    
+  }
+  .table-2 {
+    font-size: 0.4rem;
+    
+  }
+  
+  
   
   
 }
@@ -264,6 +280,14 @@ transition: box-shadow 150ms ease;
   .checkout {
     margin-left: 13%;
   }
+  .table-1 {
+    font-size: 0.4rem;
+    
+  }
+  .table-2 {
+    font-size: 0.4rem;
+    
+  }
 }
 @media only screen and (min-width: 501px) and (max-width: 600) {
   .title {
@@ -283,6 +307,14 @@ transition: box-shadow 150ms ease;
   }
   .checkout {
     margin-left: 20%;
+  }
+  .table-1 {
+    font-size: 0.4rem;
+    
+  }
+  .table-2 {
+    font-size: 0.4rem;
+    
   }
 }
 @media only screen and (min-width: 601px) and (max-width: 800px) {
@@ -305,6 +337,14 @@ transition: box-shadow 150ms ease;
   .checkout {
     margin-left: 30%;
   }
+  .table-1 {
+    font-size: 0.4rem;
+    
+  }
+  .table-2 {
+    font-size: 0.4rem;
+    
+  }
 }
 @media only screen and (min-width: 801px) {
   .title {
@@ -320,5 +360,13 @@ transition: box-shadow 150ms ease;
   }
   .links {
     display: block;
+  }
+  .table-1 {
+    font-size: 1rem;
+    
+  }
+  .table-2 {
+    font-size: 1rem;
+    
   }
 }
