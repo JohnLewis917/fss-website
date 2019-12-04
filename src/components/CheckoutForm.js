@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
+import Swal from 'sweetalert2'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class CheckoutForm extends Component {
       body: token.id
     });
   
-    if (response.ok) console.log("Purchase Complete!")
+    if (response.ok) Swal.fire("Purchase Complete!")
     if (response.ok) this.setState({complete: true});  //?
     // User clicked submit
   }
