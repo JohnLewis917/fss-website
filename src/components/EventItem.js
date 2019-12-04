@@ -4,7 +4,9 @@ import {withRouter} from 'react-router-dom'
 class EventItem extends Component {
   constructor(props) {
     super(props);
+    this.handleEdit = this.handleEdit.bind(this)
   }
+  
   handleEdit(){
     const {id} = this.props 
     this.props.history.push(`/Edit/${id}`)
@@ -18,7 +20,7 @@ class EventItem extends Component {
         <td>{this.props.eventListObj.description}</td>
 
         <td>
-          <button type="submit">Edit</button>
+          <button type="submit" onClick={this.handleEdit}>Edit</button>
           
         </td>
         <td>
