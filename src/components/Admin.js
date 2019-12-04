@@ -8,7 +8,6 @@ import Member from "./Member";
 import Images from "./Officers";
 import axios from "axios";
 import AddEvent from "./AddEvent";
-
 // registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
@@ -50,11 +49,17 @@ class Admin extends Component {
   }
 
   handleAddEvent(event) {
-    axios.post("/api/Event", event);
-    
+    axios.post("/api/Event", event).then(res => {
+      const newEventList = [...this.state.eventList, res.data[0]]
+      console.log(res.data[0])
+      this.setState({
+        eventList: newEventList 
+      })
+
+    });
   }
-  handleUpdateEvent(event) {
-    axios.put(`/api/Event/${id}`, event)
+  handleUpdateEvent = id => {
+    axios.put(`/api/Event/${id}`).then(res => console.log(res.data))
   }
 
   getOfficers() {
@@ -87,8 +92,9 @@ class Admin extends Component {
     
     return (
       <div>
-        <AddEvent onAddEvent={this.handleAddEvent} 
-        onUpdateEvent={this.handleUpdateEvent}/>
+        <AddEvent onAddEvent={this.handleAddEvent}
+         onUpdateEvent={this.handleUpdateEvent}
+        />
         <h2>Events</h2>
         <table className="table-1">
           <th>Date</th>
