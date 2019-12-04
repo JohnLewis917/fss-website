@@ -105,9 +105,13 @@ body {
   font-family: "Poppins", sans-serif;
   margin-left: 5.5rem;
 }
+.table-1 {
+  margin-bottom: 50px;
+  margin-right: 500px;
+}
 
 td, th {
-  border: 1px solid #999;
+  border: 1px solid black;
   padding: 0.5rem;
   text-align: left;
 }
@@ -167,6 +171,7 @@ td, th {
 .container-2 {
   // border: yellow 2px solid;
   @extend .container;
+  
 }
 
 button {
@@ -194,6 +199,7 @@ button {
   //  border: yellow 2px solid;
   @extend .container;
   margin: 1rem;
+  
 }
 .checkout {
 // border: yellow 2px solid;
@@ -233,6 +239,7 @@ transition: box-shadow 150ms ease;
   .checkout {
     margin-left: 10%;
   }
+  
   
 }
 @media only screen and (min-width: 414px) and (max-width: 500px) {
