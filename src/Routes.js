@@ -7,6 +7,7 @@ import Admin from './components/Admin'
 import Login from './components/Login'
 import PrivateRoute from 'react-private-route'
 import Stripe from './components/Stripe'
+import AddEvent from './components/AddEvent'
 
 export default (
 
@@ -17,5 +18,6 @@ export default (
         <Route path='/Admin' component={Admin}/>
         {/* <PrivateRoute path='/Admin' component={Admin} isAdmin/> */}
         <Route path='/Login' component={Login}/>
+        <Route path='/Edit/:id' component={AddEvent}/>
     </Switch>
 )
