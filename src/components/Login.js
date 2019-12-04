@@ -24,10 +24,8 @@ class Login extends Component {
     let res = await axios.post('/auth/login', {
       email: this.state.email,
       password: this.state.password
-    })
-    // this.setState({
-    //   member: res.data.memberData
-    // })
+    }).then(console.log(res.data))
+   
   }
   render() {
     return (
