@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import {withRouter} from 'react-router-dom'
 
 class EventItem extends Component {
   constructor(props) {
     super(props);
+  }
+  handleEdit(){
+    const {id} = this.props 
+    this.props.history.push(`/Edit/${id}`)
   }
 
   render() {
@@ -14,7 +19,7 @@ class EventItem extends Component {
 
         <td>
           <button type="submit">Edit</button>
-          {/* {this.state.isEditing ? 'Save Changes': 'Edit'} */}
+          
         </td>
         <td>
           <button
@@ -27,4 +32,4 @@ class EventItem extends Component {
     );
   }
 }
-export default EventItem;
+export default withRouter(EventItem);
