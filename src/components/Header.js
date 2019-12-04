@@ -1,8 +1,21 @@
 import React from "react";
 import logo from "../assets/926 FSS Patch.png";
 import { Link } from "react-router-dom";
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
-function Header() {
+function Header(props) {
+  const logout = () => {
+    axios.delete('/auth/logout').then(res => {
+      Swal.fire(res.data.message)
+      // props.updateUserInfo({
+      //   email: '',
+      //   name: '',
+      //   user_id: '',
+      //   profile_img: ''
+      // })
+    })
+  }
   return (
     <header>
       <div className="heading">
