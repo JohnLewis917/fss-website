@@ -15,6 +15,6 @@ export default (
         <Route path='/Payment' component={Stripe}/>
         <Route path='/Admin' component={Admin}/>
         <Route path='/Login' component={Login}/>
-        <Route path='/Edit/:id' component={AddEvent}/>
+        
     </Switch>
 )
