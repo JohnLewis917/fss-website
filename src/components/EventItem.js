@@ -9,7 +9,7 @@ class EventItem extends Component {
   
   handleEdit(){
     const {id} = this.props 
-    this.props.history.push(`/Edit/${id}`)
+    this.props.history.push(`/EventItem/${id}`)
   }
 
   render() {
