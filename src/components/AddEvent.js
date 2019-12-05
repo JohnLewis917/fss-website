@@ -37,7 +37,7 @@ class AddEvent extends Component {
   }
   updateEvent(event){
     event.preventDefault();
-    this.props.onUpdateEvent(this.state.id)
+    this.props.onUpdateEvent(this.state)
     this.setState({date: "", event: "", description: "" })
   }
   handleSubmit(event){
@@ -87,7 +87,7 @@ class AddEvent extends Component {
           <br></br>
           <br></br>
           <button onClick={this.handleSubmit} color="primary" className="submitEvent" type="button">
-          {this.state.isEditing ? 'Save Changes': 'Add'}
+          Add
           </button>
         </form>
       </div>
