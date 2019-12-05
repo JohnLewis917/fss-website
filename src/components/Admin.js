@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux'
 // import { FilePond, registerPlugin } from "react-filepond";
 // import "filepond/dist/filepond.min.css";
 // import FilePondPluginImagePreview from "filepond-plugin-image-preview";
@@ -8,6 +9,7 @@ import Member from "./Member";
 import Images from "./Officers";
 import axios from "axios";
 import AddEvent from "./AddEvent";
+import { getEvents, addEvent, updateEvent } from "../ducks/actions";
 // registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
@@ -16,30 +18,26 @@ class Admin extends Component {
     this.state = {
       officerList: [],
       memberList: [],
-      eventList: []
+      
     };
     this.handleAddEvent = this.handleAddEvent.bind(this);
     this.handleUpdateEvent = this.handleUpdateEvent.bind(this);
   }
   componentDidMount() {
-    axios.get("/api/Event").then(res => {
-      this.setState({
-        eventList: res.data
-      });
-    });
+    this.props.fetchEvents()
     axios.get("/api/People").then(res => {
       this.setState({
         memberList: res.data
       });
     });
   }
-  getEvents() {
-    axios.get("/api/Event").then(res => {
-      this.setState({
-        eventList: res.data
-      });
-    });
-  }
+  // getEvents() {
+  //   axios.get("/api/Event").then(res => {
+  //     this.setState({
+  //       eventList: res.data
+  //     });
+  //   });
+  // }
   getMember() {
     axios.get("/api/People").then(res => {
       this.setState({
@@ -49,17 +47,11 @@ class Admin extends Component {
   }
 
   handleAddEvent(event) {
-    axios.post("/api/Event", event).then(res => {
-      const newEventList = [...this.state.eventList, res.data[0]]
-      console.log(res.data[0])
-      this.setState({
-        eventList: newEventList 
-      })
-
-    });
+    this.props.addEvent(event)
   }
-  handleUpdateEvent = id => {
-    axios.put(`/api/Event/${id}`).then(res => console.log(res.data))
+  handleUpdateEvent = event => {
+    this.props.updateEvent(event)
+    // axios.put(`/api/Event/${id}`).then(res => console.log(res.data))
   }
 
   getOfficers() {
@@ -74,11 +66,11 @@ class Admin extends Component {
       this.getMember();
     });
   };
-  deleteEvent = id => {
-    axios.delete(`/api/Event/${id}`).then(() => {
-      this.getEvents();
-    });
-  };
+  // deleteEvent = id => {
+  //   axios.delete(`/api/Event/${id}`).then(() => {
+  //     this.getEvents();
+  //   });
+  // };
   updateMember() {
     console.log(this.state.id, this.state);
     axios.put(`/api/People/${this.state.id}`, {}).then(res => {
@@ -100,8 +92,9 @@ class Admin extends Component {
           <th>Date</th>
           <th>Event</th>
           <th>Description</th>
-          {this.state.eventList.map(el => (
+          {this.props.eventList.map(el => (
             <EventItem
+              id={el.id}
               key={el.id}
               eventListObj={el}
               deleteEvent={this.deleteEvent}
@@ -134,4 +127,10 @@ class Admin extends Component {
     );
   }
 }
-export default Admin;
+const mapStateToProps = (state) => {
+  return {
+    eventList: state.events
+  }
+
+}
+export default  connect(mapStateToProps, {fetchEvents: getEvents, addEvent, updateEvent})(Admin) 
