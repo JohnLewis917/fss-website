@@ -1,5 +1,9 @@
-// import {createStore} from 'redux'
-// import reducer from './reducer'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
+import eventReducer from './eventReducer'
+import promiseMiddleware from 'redux-promise';
 
-// const store = createStore(reducer)
-// export default store
+const rootReducer = combineReducers({
+    events: eventReducer
+})
+const store = createStore(rootReducer, applyMiddleware(promiseMiddleware))
+export default store
