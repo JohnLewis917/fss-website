@@ -2,6 +2,7 @@ import { GET_EVENTS, ADD_EVENT, UPDATE_EVENT, DELETE_EVENT } from "./types"
 import axios from 'axios'
 
 export const getEvents = async () => {
+    console.log('hit')
     const {data}= await axios.get("/api/Event")
       return {
           type: GET_EVENTS,
@@ -17,7 +18,7 @@ export const addEvent = async (event) => {
         }   
 }
 export const updateEvent = async (event) => {
-    axios.put("/api/Event", event)
+    axios.put(`/api/Event/${event.id}`, event)
     
         return {
             type: UPDATE_EVENT,
