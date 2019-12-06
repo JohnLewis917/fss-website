@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios'
 import Member from "./Member";
 
 
@@ -12,7 +13,8 @@ class AddMember extends Component {
       first_name: "",
       last_name: "",
       email: "",
-      password: ""
+      password: "",
+      user: {}
     };
     this.handleRank = this.handleRank.bind(this);
     this.handleFirst = this.handleFirst.bind(this);
@@ -40,8 +42,8 @@ class AddMember extends Component {
     event.preventDefault();
     this.props.onAddMember(this.state);
     this.setState({ member_rank: "", first_name: "", last_name: "", email: "", password: "" });
-    
   }
+  
 
   render() {
     return (
@@ -107,7 +109,7 @@ class AddMember extends Component {
           <button type="submit">Register</button>
           <div className="divider" />
           <Link to="/Login">
-            <button>Login</button>
+            <button type="button">Login</button>
           </Link>
         </form>
         
