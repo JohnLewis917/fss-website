@@ -14,15 +14,15 @@ class EventItem extends Component {
   }
 
   handleEdit() {
-    const { isEditing, date, event, description  } = this.state;
-    const {id} = this.props
-    if (isEditing) this.props.onSubmit({id, date, event, description})
+    const { isEditing, date, event, description } = this.state;
+    const { id } = this.props;
+    if (isEditing) this.props.onSubmit({ id, date, event, description });
     this.setState({ isEditing: !isEditing });
   }
 
   render() {
-    const { isEditing, date, event, description  } = this.state;
-    
+    const { isEditing, date, event, description } = this.state;
+
     return (
       <tr>
         <td>
@@ -35,8 +35,24 @@ class EventItem extends Component {
             <div>{date}</div>
           )}
         </td>
-        <td>{this.props.eventListObj.event}</td>
-        <td>{this.props.eventListObj.description}</td>
+        <td>
+          {isEditing ? (
+            <input
+              value={event}
+              onChange={e => this.setState({ event: e.target.value })}
+            />
+          ) : (
+            <div>{event}</div>
+          )}
+        </td>
+        <td>{isEditing ? (
+            <input
+              value={description}
+              onChange={e => this.setState({ description: e.target.value })}
+            />
+          ) : (
+            <div>{description}</div>
+          )}</td>
 
         <td>
           <button type="submit" onClick={this.handleEdit}>
