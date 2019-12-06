@@ -14,11 +14,7 @@ class Auth extends Component {
   }
   handleAddMember(event) {
     axios.post("/auth/register", event).then(res => {
-      const newMemberList = [...this.props.memberList, res.data[0]]
-      console.log(res.data[0])
-      this.setState({
-        memberList: newMemberList 
-     })
+      console.log(res.data)
    })
     
   }
