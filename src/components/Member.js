@@ -54,12 +54,12 @@ class Member extends Component {
     return (
       <tr>
         <td>{this.state.member_rank}</td>
-        <td>{this.props.memberListObj.first_name}</td>
-        <td>{this.props.memberListObj.last_name}</td>
-        <td>{this.props.memberListObj.email}</td>
-        <td>{this.props.memberListObj.paid}</td>
-        <td>{this.props.memberListObj.amount}</td>
-        <td>{this.props.memberListObj.isAdmin}</td>
+        <td>{this.state.first_name}</td>
+        <td>{this.state.last_name}</td>
+        <td>{this.state.email}</td>
+        <td>{this.state.paid}</td>
+        <td>{this.state.amount}</td>
+        <td>{this.state.isAdmin}</td>
 
         <td>
           <button onClick={() => this.toggleEdit()}>Edit</button>
