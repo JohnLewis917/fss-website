@@ -1,32 +1,50 @@
 import React, { Component } from "react";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 
 class EventItem extends Component {
   constructor(props) {
     super(props);
-    this.handleEdit = this.handleEdit.bind(this)
+    this.state = {
+      date: this.props.eventListObj.date,
+      event: this.props.eventListObj.event,
+      description: this.props.eventListObj.description,
+      isEditing: false
+    };
+    this.handleEdit = this.handleEdit.bind(this);
   }
-  
-  handleEdit(){
-    const {id} = this.props 
-    this.props.history.push(`/EventItem/${id}`)
+
+  handleEdit() {
+    const { isEditing, date, event, description  } = this.state;
+    const {id} = this.props
+    if (isEditing) this.props.onSubmit({id, date, event, description})
+    this.setState({ isEditing: !isEditing });
   }
 
   render() {
+    const { isEditing, date, event, description  } = this.state;
+    
     return (
       <tr>
-        <td>{this.props.eventListObj.date}</td>
+        <td>
+          {isEditing ? (
+            <input
+              value={date}
+              onChange={e => this.setState({ date: e.target.value })}
+            />
+          ) : (
+            <div>{date}</div>
+          )}
+        </td>
         <td>{this.props.eventListObj.event}</td>
         <td>{this.props.eventListObj.description}</td>
 
         <td>
-          <button type="submit" onClick={this.handleEdit}>Edit</button>
-          
+          <button type="submit" onClick={this.handleEdit}>
+            {isEditing ? "Save Changes" : "Edit"}
+          </button>
         </td>
         <td>
-          <button
-            onClick={() => this.props.deleteEvent(this.props.eventListObj.id)}
-          >
+          <button onClick={() => this.props.onDelete(this.props.id)}>
             Delete
           </button>
         </td>
