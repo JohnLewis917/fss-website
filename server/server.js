@@ -26,6 +26,7 @@ app.put('/api/People/:id', ctrl.updateMember)
 app.put(`/api/Event/:id`, ctrl.updateEvent)
 app.post('/auth/register', authCtrl.addMember)
 app.post('/auth/login', authCtrl.login)
+app.delete('/auth/logout', authCtrl.logout)
 app.post('/api/Event', ctrl.addEvent)
 
 app.post("/charge", async (req, res) => {
