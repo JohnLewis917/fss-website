@@ -14,7 +14,7 @@ const eventReducer = (state =initialState, action) => {
                 })
             return newArray 
         case DELETE_EVENT:
-            return state.filter(({id}) => id !==action.payload)
+                return state.filter(({id}) => id !== action.id);
         default: 
             return state;
     }
