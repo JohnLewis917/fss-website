@@ -131,6 +131,11 @@ td, th {
   // border: yellow 1px solid;
   font-size: 2em;
 }
+.flex {
+  display: flex;
+  justify-content: space-between;
+  
+}
 
 .divider {
   width: 120px;
