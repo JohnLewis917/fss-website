@@ -16,6 +16,7 @@ class Dashboard extends Component {
     console.log(this.props.eventList);
     return (
       <div className="flex">
+        
         <div>
         <h2>Upcoming Events</h2>
           <table className="table-1">
