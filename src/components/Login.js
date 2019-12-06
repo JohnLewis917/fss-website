@@ -34,7 +34,7 @@ class Login extends Component {
         <p className="login-message">
           <h3>Please login below. Not a member, please register.</h3>
         </p>
-        <form className="container-2" onSubmit={() => this.login}>
+        <form className="container-2" >
           <h5>Email</h5>
           <input
             className="input-4"
@@ -61,7 +61,7 @@ class Login extends Component {
           </Link>
           
           <div className="divider" />
-          <button type="submit">Login</button>
+          <button type="button" onClick={() => this.login}>Login</button>
         </form>
       </div>
     );
