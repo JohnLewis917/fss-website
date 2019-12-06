@@ -9,7 +9,7 @@ import Member from "./Member";
 import Images from "./Officers";
 import axios from "axios";
 import AddEvent from "./AddEvent";
-import { getEvents, addEvent, updateEvent } from "../ducks/actions";
+import { getEvents, addEvent, updateEvent, deleteEvent } from "../ducks/actions";
 // registerPlugin(FilePondPluginImagePreview);
 
 class Admin extends Component {
@@ -18,6 +18,7 @@ class Admin extends Component {
     this.state = {
       officerList: [],
       memberList: [],
+      isEditing:false
       
     };
     this.handleAddEvent = this.handleAddEvent.bind(this);
@@ -53,6 +54,12 @@ class Admin extends Component {
     this.props.updateEvent(event)
     // axios.put(`/api/Event/${id}`).then(res => console.log(res.data))
   }
+  handleDelete = (id) => {
+    this.props.deleteEvent(id)
+  }
+  deleteEvent = id => {
+    this.props.deleteEvent(id)
+  };
 
   getOfficers() {
     axios.get("/api/Officers").then(res => {
@@ -66,13 +73,9 @@ class Admin extends Component {
       this.getMember();
     });
   };
-  // deleteEvent = id => {
-  //   axios.delete(`/api/Event/${id}`).then(() => {
-  //     this.getEvents();
-  //   });
-  // };
+  
   updateMember() {
-    console.log(this.state.id, this.state);
+    
     axios.put(`/api/People/${this.state.id}`, {}).then(res => {
       this.setState({
         memberlist: res.data
@@ -97,7 +100,8 @@ class Admin extends Component {
               id={el.id}
               key={el.id}
               eventListObj={el}
-              deleteEvent={this.deleteEvent}
+              onDelete={this.handleDelete}
+              onSubmit={this.handleUpdateEvent}
             />
           ))}
         </table>
@@ -113,8 +117,10 @@ class Admin extends Component {
           {this.state.memberList.map(el => (
             <Member
               key={el.id}
+              id={el.id}
               memberListObj={el}
               deleteMember={this.deleteMember}
+              isEditing={this.state}
              
             />
           ))}
@@ -133,4 +139,4 @@ const mapStateToProps = (state) => {
   }
 
 }
-export default  connect(mapStateToProps, {fetchEvents: getEvents, addEvent, updateEvent})(Admin) 
+export default  connect(mapStateToProps, {fetchEvents: getEvents, addEvent, updateEvent,deleteEvent})(Admin) 
