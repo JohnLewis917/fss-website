@@ -38,20 +38,22 @@ class Header extends Component{
               </Link>
             </li>
             <li>
+              <Link to="/Auth">
+                <button>Login/Register</button>
+              </Link>
+            </li>
+            <li>
               <Link to="/Payment">
                 <button>Donate</button>
               </Link>
             </li>
+            
             <li>
               <Link to="/Admin">
                 <button>Admin</button>
               </Link>
             </li>
-            <li>
-              <Link to="/Auth">
-                <button>Login/Register</button>
-              </Link>
-            </li>
+            
             <li>
               <button onClick={() => this.logout()}>Logout</button>
             </li>
