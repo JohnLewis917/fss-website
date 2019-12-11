@@ -8,7 +8,7 @@ module.exports = {
       if (+found[0].count !== 0) {
         return res.status(409).send({message: 'Email already registered'})
       }
-      const member_id = await db.add_member({member_rank, first_name, last_name, email})
+      const member_id = await db.add_member({member_rank, first_name, last_name, email, password})
       const salt = bcrypt.genSaltSync(10)
       const hash = bcrypt.hashSync(password, salt)
       db.add_hash({member_id: member_id[0].id, hash})
