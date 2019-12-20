@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 
 class Login extends Component {
@@ -13,6 +14,7 @@ class Login extends Component {
     };
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.login = this.login.bind(this)
   }
   handleEmail(event) {
     this.setState({ email: event.target.value });
@@ -21,10 +23,13 @@ class Login extends Component {
     this.setState({ password: event.target.value });
   }
   async login() {
-    let res = await axios.post('/auth/login', {
+    const {data} = await axios.post('/auth/login', {
       email: this.state.email,
       password: this.state.password
-    }).then(console.log(res.data))
+    })
+    localStorage.setItem('isadmin', data.member.isadmin)
+    Swal.fire("You are logged in!")
+    this.props.history.push('/')
    
   }
   render() {
@@ -61,7 +66,7 @@ class Login extends Component {
           </Link>
           
           <div className="divider" />
-          <button type="button" onClick={() => this.login}>Login</button>
+          <button type="button" onClick={this.login}>Login</button>
         </form>
       </div>
     );
