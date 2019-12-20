@@ -42,6 +42,7 @@ class AddMember extends Component {
     event.preventDefault();
     this.props.onAddMember(this.state);
     this.setState({ member_rank: "", first_name: "", last_name: "", email: "", password: "" });
+    
   }
   
 
