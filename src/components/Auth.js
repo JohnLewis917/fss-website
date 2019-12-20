@@ -1,36 +1,25 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import AddMember from './AddMember';
-import Login from './Login';
-
-
-
-
+import React, { Component } from "react";
+import axios from "axios";
+import AddMember from "./AddMember";
+import Login from "./Login";
+import Swal from 'sweetalert2'
 
 class Auth extends Component {
   constructor(props) {
     super(props);
-    
+    this.handleAddMember = this.handleAddMember.bind(this)
   }
-  handleAddMember(event) {
-    axios.post("/auth/register", event).then(res => {
-      console.log(res.data)
-   })
-    
+  async handleAddMember(user) {
+    const { data } = await axios.post("/auth/register", user);
+    Swal.fire("Welcome!")
+    this.props.history.push("/");
   }
-    // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
-  
-  
-  
+  // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
 
   render() {
     return (
       <div>
-        <AddMember onAddMember={this.handleAddMember}/>
-        
-        
-        
-        
+        <AddMember onAddMember={this.handleAddMember} />
       </div>
     );
   }
