@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import logo from "../assets/926 FSS Patch.png";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
@@ -14,6 +14,8 @@ class Header extends Component{
   async logout() {
     axios.delete('/auth/logout')
     this.setState({ user: {} })
+    localStorage.removeItem('isadmin')
+    this.props.history.push('/Auth')
   }
   render(){
 
@@ -65,4 +67,4 @@ class Header extends Component{
 }
   
 
-export default Header;
+export default withRouter(Header);
