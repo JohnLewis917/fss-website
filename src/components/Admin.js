@@ -25,12 +25,18 @@ class Admin extends Component {
     this.handleUpdateEvent = this.handleUpdateEvent.bind(this);
   }
   componentDidMount() {
-    this.props.fetchEvents()
-    axios.get("/api/People").then(res => {
-      this.setState({
-        memberList: res.data
+    const isAdmin = localStorage.getItem('isadmin')
+    if(isAdmin){
+
+      this.props.fetchEvents()
+      axios.get("/api/People").then(res => {
+        this.setState({
+          memberList: res.data
+        });
       });
-    });
+    }else {
+      this.props.history.push('/')
+    }
   }
   // getEvents() {
   //   axios.get("/api/Event").then(res => {
