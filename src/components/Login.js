@@ -25,7 +25,8 @@ class Login extends Component {
   async login() {
     const {data} = await axios.post('/auth/login', {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      
     })
     localStorage.setItem('isadmin', data.member.isadmin)
     Swal.fire("You are logged in!")
