@@ -55,7 +55,7 @@ class AddMember extends Component {
             New members please register below. Already a member, please login.
           </h3>
         </p>
-        <form className="container" onSubmit={this.addMember}>
+        <form className="container" onSubmit={this.addMember} autoComplete='off'>
           <h5>Rank</h5>
           <input
             className="input-1"
