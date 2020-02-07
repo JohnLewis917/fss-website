@@ -14,7 +14,7 @@ class Auth extends Component {
     Swal.fire("Welcome!")
     this.props.history.push("/");
   }
-  // .then(res => {this.setState({eventList: [...this.state.eventList, ]})})
+  
 
   render() {
     return (
