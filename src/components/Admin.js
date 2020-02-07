@@ -38,13 +38,7 @@ class Admin extends Component {
       this.props.history.push('/')
     }
   }
-  // getEvents() {
-  //   axios.get("/api/Event").then(res => {
-  //     this.setState({
-  //       eventList: res.data
-  //     });
-  //   });
-  // }
+ 
   getMember() {
     axios.get("/api/People").then(res => {
       this.setState({
@@ -58,7 +52,7 @@ class Admin extends Component {
   }
   handleUpdateEvent = event => {
     this.props.updateEvent(event)
-    // axios.put(`/api/Event/${id}`).then(res => console.log(res.data))
+    
   }
   handleDelete = (id) => {
     this.props.deleteEvent(id)
@@ -132,9 +126,7 @@ class Admin extends Component {
           ))}
         </table>
 
-        <div className="file-pond">
-          {/* <FilePond allowMultiple={true} /> */}
-        </div>
+        
       </div>
     );
   }
